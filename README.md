@@ -12,7 +12,8 @@ When we first encountered sorting Algorithms, QuickSort was the first Algo that 
 
 <h4>
 
-So here is our project [QuickSort Visualizer](https://saketthota.github.io/QuickSortVisualizer/) which is a visual representation of how QuickSort Algorithm works behind the scenes.
+
+So here is our project [QuickSort Visualizer](https://affectionate-agnesi-d5bbc9.netlify.app/) which is a visual representation of how QuickSort Algorithm works behind the scenes.
 
 </h4>
 <br>
@@ -55,23 +56,24 @@ This is an optional field to generate an array with size specified here , and th
 ![](images/functions.png)
 * ## Generate Random Array
 
-    <h3>If size of array is specified in Random input section, then it generates array of that size .
 
-    Otherwise, It will generate an array of random size filled with random values . </h3>
+     If size of array is specified in Random input section, then it generates array of that size .
+
+     Otherwise, It will generate an array of random size filled with random values .
 
 * ## Shuffle Array
 
-    <h3>Shuffles the elements within the array which is displayed on screen. </h3>
-* ## Visualize
 
-    <h3>This is the button(backbone) of the visualizer tool, when clicked visualization get started .</h3>
-* ## Speed
 
-    <h3>
-	To control the speed of the visualization , <strong>low</strong> implies decreament in speed and <strong>high<strong> implies increment in speed .
-    </h3>
+     Shuffles the elements within the array which is displayed on screen.
+* ### Visualize
+
+    This is the button(backbone) of the visualizer tool, when clicked visualization get started .
+* ### Speed
+
+    To control the speed of the visualization , **low** implies decreament in spped and **high** implies increment in speed .
 <br>
-<br>
+
 
 
 # _**References**_
