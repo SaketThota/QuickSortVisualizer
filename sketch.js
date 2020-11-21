@@ -8,58 +8,59 @@ var w = window.innerWidth,
 	cur = -1,
 	it1 = -1,
 	it2 = -1,
-	isCustom1,isCustom2
+	isCustom1,isCustom2,
 	speed = 700,
 	counter = document.querySelector('#counter');
 
 const genBtn = document.querySelector('#genArr'),
     shuffleBtn = document.querySelectorAll('.shuffleBtn'),
+    visQuickSort = document.querySelector('#visualBtn'),
     navgenBtn = document.querySelector('#navgenArr'),
     navCustomInput = document.querySelector('#navCustomEleIpt'),
     navVisQuickSort = document.querySelector('#navVisualBtn'),
-    customInput = document.querySelector('#customEleIpt'),
-    visQuickSort = document.querySelector('#visualBtn');
-
-function setup() {
+    customInput = document.querySelector('#customEleIpt');
+    
+    function setup() {
 	let canvas = createCanvas(w, h - toolsHeight / 2.2 + smHeight / 20);
 	canvas.parent('canvas');
 	canvas.style('display', 'block');
-
+    
 	visQuickSort.addEventListener('click', function checker() {
-		if (isCustom1) {
+        if (isCustom1) {
 			a = customInput.value.split(',').map((e) => parseInt(e));
         }
         for (let i = 0; i < a.length; ++i) { 
             if (isNaN(a[i])) 
-                alert("Please enter valid input.");
+            alert("Please enter valid input.");
         }
-
+        
 		flag = new Array(a.length);
-		flag.fill(0);
-		quickSort(a, 0, a.length - 1);
+        flag.fill(0);
+
+        quickSort(a, 0, a.length - 1);
 	});
-
+    
 	navVisQuickSort.addEventListener('click', function checker() {
-		if (isCustom2) {
-			a = navCustomInput.value.split(',').map((e) => parseInt(e));
+        if (isCustom2) {
+            a = navCustomInput.value.split(',').map((e) => parseInt(e));
 		}
-
+        
 		flag = new Array(a.length);
-		flag.fill(0);
-		quickSort(a, 0, a.length - 1);
+        flag.fill(0);
+        quickSort(a, 0, a.length - 1);
 	});
 }
 
 function generate() {
-	let rdSize = document.querySelector('#randomSzIpt').value;
+    let rdSize = document.querySelector('#randomSzIpt').value;
 	let navrdSize = document.querySelector('#navrandomSzIpt').value;
 	a = [];
     n = parseInt(rdSize);
     
 	if(!rdSize) n = parseInt(navrdSize);
-	if (!n) n = Math.round(random(20, 150));
+	if (!n) n = Math.round(random(20, 200));
 
-    n = Math.min(n, 1000);
+    n = Math.min(n, 800);
 	a = new Array(n);
 	for (let i = 0; i < a.length; ++i) a[i] = Math.round(random(50, 500));
 	flag = new Array(a.length);
@@ -68,9 +69,9 @@ function generate() {
 }
 
 function isSorted(arr) {
-	let temp = true;
+    let temp = true;
 	for (let i = 1; i < arr.length; ++i) {
-		if (arr[i - 1] > arr[i]) {
+        if (arr[i - 1] > arr[i]) {
 			temp = false;
 			break;
 		}
@@ -79,18 +80,19 @@ function isSorted(arr) {
 }
 
 function draw() {
-	background('#0F2027');
+    background('#0F2027');
 	textAlign(CENTER);
 	checkCustom();
+    
+    if (a.length > 0) {
 
-	if (a.length > 0) {
-		if (flag[0] != 2) {
-			if (cur >= 0) flag[cur] = 1;
-			if (it1 >= 0) flag[it1] = flag[it2] = 3;
-		}
-
+        if (flag[0] != 2) {
+            if (cur >= 0) flag[cur] = 1;
+            if (it1 >= 0) flag[it1] = flag[it2] = 3;
+        } 
+        
 		let hRatio = Math.round(w / a.length),
-			x = 0;
+        x = 0;
 		let mul = w % a.length;
 		mul /= a.length;
 		hRatio += mul;
@@ -109,11 +111,11 @@ function draw() {
 			x += hRatio;
 		}
 
-		if (flag[0] != 2) {
-			if (cur >= 0) flag[cur] = 0;
-			if (it1 >= 0) flag[it1] = flag[it2] = 0;
-		}
-	}
+        if (flag[0] != 2) {
+            if (cur >= 0) flag[cur] = 0;
+            if (it1 >= 0) flag[it1] = flag[it2] = 0;
+        } 
+    }
 	
 	for (let i = 0; i < 2; ++i) {
 		shuffleBtn[i].addEventListener('click', () => {
